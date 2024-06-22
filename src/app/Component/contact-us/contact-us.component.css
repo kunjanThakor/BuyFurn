@@ -1,0 +1,75 @@
+.untree_co-section {
+    padding: 7rem 0;
+}
+
+.form-group {
+    margin-top: 10px;
+
+}
+
+.form-control {
+    height: 50px;
+    border-radius: 10px;
+    font-family: "Inter", sans-serif;
+}
+
+.form-control:active,
+.form-control:focus {
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-color: #3b5d50;
+    -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.form-control::-webkit-input-placeholder {
+    font-size: 14px;
+}
+
+.form-control::-moz-placeholder {
+    font-size: 14px;
+}
+
+.form-control:-ms-input-placeholder {
+    font-size: 14px;
+}
+
+.form-control:-moz-placeholder {
+    font-size: 14px;
+}
+
+.service {
+    line-height: 1.5;
+}
+
+.service .service-icon {
+    border-radius: 10px;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50px;
+    flex: 0 0 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #3b5d50;
+    margin-right: 20px;
+    color: #ffffff;
+}
+
+textarea {
+    height: auto !important;
+}
+
+.btn {
+    color: #ffffff;
+    background: #2f2f2f;
+    border-color: #2f2f2f;
+    font-weight: 600;
+    padding: 12px 30px;
+    border-radius: 30px;
+}
+
+.btn:active {
+    background: #3e3d3d;
+
+}

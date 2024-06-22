@@ -1,0 +1,60 @@
+<div class="container product-container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="image-slider">
+                <div class="slide" *ngFor="let imgUrl of product.imageUrls; let i = index"
+                    [class.active]="i === currentSlide">
+                    <img [src]="imgUrl" alt="Product Image {{i + 1}}" class="product-image img-fluid">
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="btn btn-link" (click)="prevSlide()"><i
+                        class="bi bi-arrow-left-circle text-danger"></i></button>
+                <button class="btn btn-link" (click)="nextSlide()"><i
+                        class="bi bi-arrow-right-circle text-danger"></i></button>
+            </div>
+        </div>
+        <div class="col-md-6 product-details">
+            <h1 class="product-title">{{ product.title }}</h1>
+            <p class="product-price">${{ product.price }}</p>
+            <p class="product-description">{{ product.description }}</p>
+
+            <div class="product-quantity">
+                <label for="quantity">Quantity:</label>
+                <select id="quantity" [(ngModel)]="quantity">
+                    <option *ngFor="let q of [1, 2, 3, 4, 5]" [value]="q">{{ q }}</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn btn-warning mt-3">Add to Cart</button>
+            <button type="button" class="btn btn-outline-warning  mt-3 ms-3">Buy Now</button>
+
+            <div class="product-extra">
+                <details>
+                    <summary>Product Details</summary>
+                    <p>{{ product.details }}</p>
+                </details>
+
+                <details>
+                    <summary>Warranty</summary>
+                    <p>{{product.warranty}}</p>
+                </details>
+
+                <details>
+                    <summary>Q & A</summary>
+                    <div *ngFor="let question of questions">
+                        <p><strong>Q:</strong> {{ question.text }}</p>
+                        <p *ngIf="question.answer"><strong>A:</strong> {{ question.answer }}</p>
+                    </div>
+                    <p *ngIf="questions.length === 0">No questions yet. Be the first to ask!</p>
+                    <div class="qa-input">
+                        <input type="text" [(ngModel)]="newQuestion" placeholder="Ask a question" />
+                        <button class="btn btn-secondary" (click)="postQuestion()">Post</button>
+                    </div>
+                </details>
+
+
+            </div>
+        </div>
+    </div>
+</div>

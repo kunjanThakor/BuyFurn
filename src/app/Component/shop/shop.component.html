@@ -1,0 +1,40 @@
+<!-- shop.component.html -->
+<!-- Start Hero Section -->
+<div class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="intro-excerpt">
+                    <h2>Shop</h2>
+                </div>
+            </div>
+            <div class="col-lg-7 d-flex justify-content-end">
+                <div class="filter-section input-group">
+                    <input type="text" class="form-control" placeholder="Search Product" [(ngModel)]="filterText">
+                    <button class="btn" (click)="onSearch()">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Hero Section -->
+
+<!-- Category Filter Dropdown -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-12 d-flex justify-content-end">
+            <div class="input-group mb-3" style="max-width: 300px;">
+                <label class="input-group-text" for="categorySelect">Filter by</label>
+                <select class="form-select" id="categorySelect" [(ngModel)]="selectedCategory"
+                    (change)="onCategoryChange()">
+                    <option value="All Categories" selected>All Categories</option>
+                    <option value="office">Office</option>
+                    <option value="home">Home</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<app-product-section [filterText]="search"></app-product-section>
