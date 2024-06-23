@@ -6,7 +6,7 @@ import { HomeComponent } from './Component/home/home.component';
 import { SliderComponent } from './Component/slider/slider.component';
 import { LoginComponent } from './Component/login/login.component';
 import { RegisterComponent } from './Component/register/register.component';
-import { ShopComponent } from './Component/shop/shop.component';
+import { FurnitureComponent } from './Component/furniture/furniture.component';
 import { ProductDetailComponent } from './Component/product-detail/product-detail.component';
 import { AdminComponent } from './Admin/admin.component';
 import { DashbordcomponetComponent } from './Admin/dashbordcomponet/dashbordcomponet.component';
@@ -19,7 +19,7 @@ export const routes: Routes = [
             { path: 'slider', component: SliderComponent },
             { path: 'contact', component: ContactUsComponent },
             { path: 'about', component: AboutUsComponent },
-            { path: 'shop', component: ShopComponent },
+            { path: 'furniture', component: FurnitureComponent },
             { path: 'product', component: ProductDetailComponent },
         ]
     },
