@@ -8,6 +8,9 @@ import { LoginComponent } from './Component/login/login.component';
 import { RegisterComponent } from './Component/register/register.component';
 import { ShopComponent } from './Component/shop/shop.component';
 import { ProductDetailComponent } from './Component/product-detail/product-detail.component';
+import { AdminComponent } from './Admin/admin.component';
+import { DashbordcomponetComponent } from './Admin/dashbordcomponet/dashbordcomponet.component';
+import { ProductComponent } from './Admin/product/product.component';
 
 export const routes: Routes = [
     {
@@ -20,8 +23,14 @@ export const routes: Routes = [
             { path: 'product', component: ProductDetailComponent },
         ]
     },
+
     { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent }
+    { path: 'register', component: RegisterComponent },
 
-
+    {
+        path: 'admin', component: AdminComponent, children: [
+            { path: '', component: DashbordcomponetComponent },
+            { path: 'product', component: ProductComponent },
+        ]
+    }
 ];

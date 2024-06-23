@@ -1,0 +1,44 @@
+/* product-management.component.css */
+
+#product-card-container .card {
+    height: 100%;
+}
+
+#product-card-container img {
+    object-fit: contain;
+    height: 150px;
+    width: 100%;
+}
+
+#product-card-container .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination .page-item.disabled .page-link {
+    cursor: not-allowed;
+}
+
+.container {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.card {
+    padding-top: 30px;
+    flex: 1 0 calc(33.333% - 1rem);
+    /* Adjust the percentage based on the number of columns you want */
+    margin: 0.5rem;
+    max-width: 400px;
+    /* Ensure the cards don't exceed their container */
+}
