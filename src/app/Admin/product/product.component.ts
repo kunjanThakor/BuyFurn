@@ -19,20 +19,10 @@ export interface Product {
 
 
 export class ProductComponent {
+
   currentPage: number = 1;
-  itemsPerPage: number = 15; // 3 columns * 5 rows
+  itemsPerPage: number = 6; // 3 columns * 2 rows
   totalPages: number = 1;
-
-  changePage(page: number) {
-    if (page < 1 || page > this.totalPages) {
-      return;
-    }
-    this.currentPage = page;
-    const start = (this.currentPage - 1) * this.itemsPerPage;
-    const end = start + this.itemsPerPage;
-    this.filteredProducts = this.products.slice(start, end);
-  }
-
   products: Product[] = [
     {
       id: 1, name: 'Chair', price: 50,
@@ -42,21 +32,71 @@ export class ProductComponent {
       id: 2, name: 'Table', price: 150,
       imageUrl: '../../../assets/images/bowl-2.png'
     },
-
+    {
+      id: 1, name: 'Chair', price: 50,
+      imageUrl: '../../../assets/images/couch.png'
+    },
+    {
+      id: 2, name: 'Table', price: 150,
+      imageUrl: '../../../assets/images/bowl-2.png'
+    },
+    {
+      id: 1, name: 'a', price: 50,
+      imageUrl: '../../../assets/images/couch.png'
+    },
+    {
+      id: 2, name: 'B', price: 150,
+      imageUrl: '../../../assets/images/bowl-2.png'
+    },
+    {
+      id: 1, name: 'c', price: 50,
+      imageUrl: '../../../assets/images/couch.png'
+    },
+    {
+      id: 2, name: 'D', price: 150,
+      imageUrl: '../../../assets/images/bowl-2.png'
+    },
+    {
+      id: 1, name: 'E', price: 50,
+      imageUrl: '../../../assets/images/couch.png'
+    },
+    {
+      id: 2, name: 'F', price: 150,
+      imageUrl: '../../../assets/images/bowl-2.png'
+    }
     // Add more products as needed
   ];
-  filteredProducts: Product[] = this.products;
+  filteredProducts: Product[] = [];
   searchTerm: string = '';
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.applyFilter();
   }
 
   applyFilter() {
-    this.filteredProducts = this.products.filter(product =>
+    const filtered = this.products.filter(product =>
       product.name.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
+    this.totalPages = Math.ceil(filtered.length / this.itemsPerPage);
+    this.changePage(1);
+
+  }
+
+  changePage(page: number) {
+    if (page < 1 || page > this.totalPages) {
+      return;
+    }
+    this.currentPage = page;
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    this.filteredProducts = this.products.filter(product =>
+      product.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    ).slice(start, end);
+
+    console.log(this.filteredProducts.length);
+
   }
 
   goToAddProduct() {
@@ -75,7 +115,6 @@ export class ProductComponent {
     // Implement delete functionality here (e.g., calling a service)
     console.log('Delete product with id:', productId);
   }
-
 
 
 }
