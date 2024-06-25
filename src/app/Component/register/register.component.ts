@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { User } from '../../Interface/user';
+import { UserService } from '../../Services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -11,17 +13,23 @@ import { RouterLink } from '@angular/router';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+
+  constructor(private userService: UserService) { }
+
+
   switchToLogin() {
     throw new Error('Method not implemented.');
   }
-  fullName: any;
-  email: any;
-  username: any;
-  password: any;
+  user: User = {
+    name: '',
+    email: '',
+    pasword: ''
+  }
   registrationSuccess: any;
   registrationError: any;
   register() {
-    throw new Error('Method not implemented.');
+    console.log(this.user);
+    this.userService.register(this.user).subscribe(resp => console.log(resp))
   }
 
 }
