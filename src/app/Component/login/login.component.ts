@@ -14,11 +14,12 @@ export class LoginComponent {
   forgotPassword() {
     throw new Error('Method not implemented.');
   }
-  username: any;
+  email: any;
   password: any;
   loginError: any;
   login() {
-    throw new Error('Method not implemented.');
+    console.log(this.email, this.password);
+
   }
 
 }
