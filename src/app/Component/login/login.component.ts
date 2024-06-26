@@ -5,6 +5,7 @@ import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../Services/user.service';
 import Swal from 'sweetalert2';
 import { User } from '../../Interface/user';
+import { EncryptionService } from '../../Services/encryption.service';
 
 @Component({
   selector: 'app-login',
@@ -26,7 +27,7 @@ export class LoginComponent {
     email: '',
     pasword: ''
   }
-  constructor(private userService: UserService,private router:Router) { }
+  constructor(private userService: UserService, private router: Router, private encryptionService: EncryptionService) { }
 
   login() {
     Swal.fire({
@@ -38,8 +39,8 @@ export class LoginComponent {
       }
     });
 
-    sessionStorage.setItem("username", this.username);
-    sessionStorage.setItem("password", this.password);
+    sessionStorage.setItem("username", this.encryptionService.encryptData(this.username));
+    sessionStorage.setItem("password", this.encryptionService.encryptData(this.password));
     this.userService.login(this.username, this.password).subscribe(
       (resp) => {
         Swal.close();  // Close the loader
@@ -52,7 +53,7 @@ export class LoginComponent {
         }
         this.user = resp;
         if (this.user.roles?.includes("ADMIN")) {
-            this.router.navigate(["/"])
+          this.router.navigate(["/"])
         }
       },
       (error) => {

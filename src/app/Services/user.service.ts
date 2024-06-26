@@ -8,7 +8,7 @@ import { User } from '../Interface/user';
 })
 export class UserService {
 
-  private baseUrl: string = 'http://localhost:8086/api';
+  private baseUrl: string = 'https://zonal-beauty-production.up.railway.app/api';
   constructor(private http: HttpClient) { }
 
   login(username: any, password: any): Observable<any> {
