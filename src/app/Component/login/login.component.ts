@@ -3,9 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../Service/user.service';
-import { User } from '../../Interface/user';
-import { response } from 'express';
-import { error } from 'console';
+
 
 @Component({
   selector: 'app-login',
@@ -26,7 +24,7 @@ export class LoginComponent {
 
   login(): void {
 
-    let authString = 'Basic ' + btoa(this.username + ':' + this.password);
+    let authString = 'Basic ' + btoa(this.username.trim() + ':' + this.password);
     sessionStorage.setItem('basicauth', authString);
 
     this.userService.login().subscribe(
