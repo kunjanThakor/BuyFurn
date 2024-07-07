@@ -12,6 +12,7 @@ import { AdminComponent } from './Admin/admin.component';
 import { DashbordcomponetComponent } from './Admin/dashbordcomponet/dashbordcomponet.component';
 import { ProductComponent } from './Admin/product/product.component';
 import { UsersComponent } from './Admin/users/users.component';
+import { OtpComponent } from './Component/otp/otp.component';
 
 export const routes: Routes = [
     {
@@ -27,6 +28,7 @@ export const routes: Routes = [
 
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'verify-otp', component: OtpComponent },
 
     {
         path: 'admin', component: AdminComponent,
