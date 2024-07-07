@@ -8,8 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  baseUrl: String = "https://zonal-beauty-production.up.railway.app/api"
+  // baseUrl: String = "https://zonal-beauty-production.up.railway.app/api"
 
+  baseUrl: String = "http://localhost:8089/api"
   constructor(private httpClient: HttpClient) { }
 
   login(): Observable<any> {
@@ -20,5 +21,12 @@ export class UserService {
     return this.httpClient.post(`${this.baseUrl}/register`, user);
   }
 
+  generateOtp(email: string): Observable<any> {
+    return this.httpClient.post(`${this.baseUrl}/generate-otp`, { email });
+  }
+
+  verifyOtp(email: string, otp: string): Observable<any> {
+    return this.httpClient.post(`${this.baseUrl}/verify-otp`, { email, otp });
+  }
 
 }
