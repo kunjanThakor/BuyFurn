@@ -1,41 +1,68 @@
-#product-card-container .card {
-    height: 100%;
+/* Optional CSS to enhance modal appearance */
+
+/* Center modal vertically */
+.modal-dialog {
+    margin: 30px auto;
 }
 
-#product-card-container img {
-    object-fit: contain;
-    height: 150px;
-    width: 100%;
+/* Increase modal width for larger content */
+.modal-lg {
+    max-width: 800px;
 }
 
-#product-card-container .card-body {
-    display: flex;
-    flex-direction: column;
+/* Style for modal header */
+.modal-header {
+    background-color: #007bff;
+    /* Blue background */
+    color: #fff;
+    /* White text */
+    border-bottom: 1px solid #dee2e6;
+    /* Light gray border */
 }
 
-.pagination {
-    margin-top: 20px;
+/* Close button style */
+.close {
+    color: #fff;
+    /* White close button */
 }
 
-.pagination .page-item.disabled .page-link {
-    cursor: not-allowed;
+/* Form input style */
+.form-control {
+    border-color: #ced4da;
+    /* Gray border */
 }
 
-.container {
-    max-width: 100%;
-    overflow-x: hidden;
+/* Primary button style */
+.btn-primary {
+    background-color: #007bff;
+    /* Blue background */
+    border-color: #007bff;
+    /* Blue border */
 }
 
-.row {
-    display: flex;
-    flex-wrap: wrap;
+/* Primary button hover style */
+.btn-primary:hover {
+    background-color: #0069d9;
+    /* Darker blue on hover */
+    border-color: #0062cc;
+    /* Darker blue border on hover */
 }
 
-.card {
-    padding-top: 30px;
-    flex: 1 0 calc(33.333% - 1rem);
-    /* Adjust the percentage based on the number of columns you want */
-    margin: 0.5rem;
-    max-width: 400px;
-    /* Ensure the cards don't exceed their container */
+.form-group {
+    padding-top: 10px;
+}
+
+/* Custom CSS for top slide animation */
+@keyframes slideInFromTop {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.top-slide .modal-dialog {
+    animation: slideInFromTop 0.5s ease-out;
 }
