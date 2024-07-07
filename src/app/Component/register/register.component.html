@@ -10,18 +10,18 @@
                         <div class="mb-3">
                             <label for="fullName" class="form-label">Your Name</label>
                             <input type="text" id="fullName" name="fullName" class="form-control" required
-                                [(ngModel)]="fullName">
+                                [(ngModel)]="user.name">
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" id="email" name="email" class="form-control" required
-                                [(ngModel)]="email">
+                                [(ngModel)]="user.email">
                         </div>
 
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" id="password" name="password" class="form-control" required
-                                [(ngModel)]="password">
+                                [(ngModel)]="user.pasword">
                         </div>
                         <button type="submit" class="btn w-100">Verify email</button>
                     </form>
