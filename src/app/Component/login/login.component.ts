@@ -1,7 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { UserService } from '../../Service/user.service';
+import { User } from '../../Interface/user';
+import { response } from 'express';
+import { error } from 'console';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +15,41 @@ import { RouterLink } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+
+  username: string = "";
+  password: string = "";
+
+
+  loginError: any;
+
+  constructor(private userService: UserService, private router: Router) { }
+
+  login(): void {
+
+    let authString = 'Basic ' + btoa(this.username + ':' + this.password);
+    sessionStorage.setItem('basicauth', authString);
+
+    this.userService.login().subscribe(
+      response => {
+        const roles = response.roles;
+        if (roles.includes("ADMIN")) {
+          console.log(roles);
+          this.router.navigate(['/admin']);
+        }
+        else {
+          this.router.navigate([''])
+          console.log(roles);
+
+        }
+      },
+      error => {
+        console.error('Login failed', error);
+      }
+    );
+  }
+
+
   forgotPassword() {
     throw new Error('Method not implemented.');
   }
-  email: any;
-  password: any;
-  loginError: any;
-  login() {
-    console.log(this.email, this.password);
-
-  }
-
 }
