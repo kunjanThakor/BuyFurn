@@ -1,5 +1,6 @@
 import { NgClass, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin-profile',
@@ -11,12 +12,20 @@ import { Component } from '@angular/core';
 export class AdminProfileComponent {
   isProfileModalOpen = false;
 
+  constructor(private router: Router) { }
   toggleProfileModal() {
     this.isProfileModalOpen = !this.isProfileModalOpen;
   }
 
   closeProfileModal() {
     this.isProfileModalOpen = false;
+  }
+
+  logout() {
+    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('basicauth');
+    this.router.navigate(['/']);
+
   }
 
 }
