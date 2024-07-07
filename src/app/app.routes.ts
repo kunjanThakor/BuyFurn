@@ -11,6 +11,7 @@ import { ProductDetailComponent } from './Component/product-detail/product-detai
 import { AdminComponent } from './Admin/admin.component';
 import { DashbordcomponetComponent } from './Admin/dashbordcomponet/dashbordcomponet.component';
 import { ProductComponent } from './Admin/product/product.component';
+import { UsersComponent } from './Admin/users/users.component';
 
 export const routes: Routes = [
     {
@@ -28,9 +29,11 @@ export const routes: Routes = [
     { path: 'register', component: RegisterComponent },
 
     {
-        path: 'admin', component: AdminComponent, children: [
+        path: 'admin', component: AdminComponent,
+        children: [
             { path: '', component: DashbordcomponetComponent },
             { path: 'product', component: ProductComponent },
+            { path: 'users', component: UsersComponent },
         ]
     }
 ];
