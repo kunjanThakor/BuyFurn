@@ -53,7 +53,7 @@ export class LoginComponent {
         }
         this.user = resp;
         if (this.user.roles?.includes("ADMIN")) {
-          this.router.navigate(["/"])
+          // this.router.navigate(["/"])
         }
       },
       (error) => {
