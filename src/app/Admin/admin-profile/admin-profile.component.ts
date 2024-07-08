@@ -22,9 +22,12 @@ export class AdminProfileComponent {
   }
 
   logout() {
-    sessionStorage.removeItem('username');
-    sessionStorage.removeItem('basicauth');
-    this.router.navigate(['/']);
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.removeItem('username');
+      sessionStorage.removeItem('basicauth');
+      this.router.navigate(['/']);
+
+    }
 
   }
 

@@ -25,7 +25,9 @@ export class LoginComponent {
   login(): void {
 
     let authString = 'Basic ' + btoa(this.username.trim() + ':' + this.password);
-    sessionStorage.setItem('basicauth', authString);
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.setItem('basicauth', authString);
+    }
 
     this.userService.login().subscribe(
       response => {

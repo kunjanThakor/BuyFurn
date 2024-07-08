@@ -1,17 +1,22 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  const authString = sessionStorage.getItem('basicauth');
-  if (authString) {
-    const clonedRequest = req.clone({
-      setHeaders: {
-        Authorization: authString
-      }
 
-    });
-    console.log(authString);
+  if (typeof sessionStorage !== 'undefined') {
 
-    return next(clonedRequest);
+    const authString = sessionStorage.getItem('basicauth');
+    if (authString) {
+      const clonedRequest = req.clone({
+        setHeaders: {
+          Authorization: authString
+        }
+
+      });
+      console.log(authString);
+
+      return next(clonedRequest);
+    }
   }
+
   return next(req);
 };

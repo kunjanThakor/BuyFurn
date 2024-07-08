@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 import { UserService } from '../../Service/user.service';
 import { response } from 'express';
@@ -14,12 +14,21 @@ import { Router } from '@angular/router';
   templateUrl: './otp.component.html',
   styleUrl: './otp.component.css'
 })
-export class OtpComponent {
+export class OtpComponent implements OnInit {
   verificationError: any;
 
   constructor(private userservice: UserService, private router: Router) { }
-  email: any = sessionStorage.getItem("email");
+
+  ngOnInit(): void {
+    if (typeof sessionStorage !== 'undefined') {
+      this.email = sessionStorage.getItem("email");
+    }
+  }
+  email: any;
   otp: any;
+
+
+
 
 
   user: any = {
@@ -33,22 +42,22 @@ export class OtpComponent {
     this.userservice.verifyOtp(this.email, this.otp).subscribe(response => {
       if (response == true) {
         console.log("successs");
-        this.user.email = sessionStorage.getItem("email")
-        this.user.name = sessionStorage.getItem("name")
-        this.user.pasword = sessionStorage.getItem("pasword")
+        if (typeof sessionStorage !== 'undefined') {
+          this.user.email = sessionStorage.getItem("email")
+          this.user.name = sessionStorage.getItem("name")
+          this.user.pasword = sessionStorage.getItem("pasword")
+          this.userservice.register(this.user).subscribe(response => {
+            if (response) {
+              sessionStorage.clear();
+              this.router.navigate(['/login']);
+            }
 
+          }, error => {
+            console.log(error);
 
-        this.userservice.register(this.user).subscribe(response => {
-          if (response) {
-            sessionStorage.clear();
-            this.router.navigate(['/login']);
-          }
+          })
 
-        }, error => {
-          console.log(error);
-
-        })
-
+        }
       }
       else {
         this.verificationError = true;

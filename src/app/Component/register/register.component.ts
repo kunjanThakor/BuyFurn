@@ -26,19 +26,24 @@ export class RegisterComponent {
 
   constructor(private userSerive: UserService, private route: Router) { }
   registrationError: any;
-
-
+  emailIdExits: any;
   generateOtp() {
     this.userSerive.generateOtp(this.user.email).subscribe(response => {
-      console.log('OTP sent to email:', response);
-      sessionStorage.setItem("email", this.user.email.trim())
-      sessionStorage.setItem("name", this.user.name)
-      sessionStorage.setItem("pasword", this.user.pasword)
-      this.route.navigate(['/verify-otp']);
+      if (typeof sessionStorage !== 'undefined') {
+        sessionStorage.setItem("email", this.user.email.trim())
+        sessionStorage.setItem("name", this.user.name)
+        sessionStorage.setItem("pasword", this.user.pasword)
+        this.route.navigate(['/verify-otp']);
+      }
+
     },
       error => {
-        console.error('Error generating OTP:', error);
-        this.registrationError = true;
+        if (error.status == 302) {
+          this.emailIdExits = true;
+        }
+        else {
+          this.registrationError = true;
+        }
       }
     );
   }
