@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class ProductService {
 
   baseUrl: String = "https://zonal-beauty-production.up.railway.app/api/admin"
+  baseUrl1: String = "https://zonal-beauty-production.up.railway.app/api"
   constructor(private httpclient: HttpClient) { }
 
   addProduct(product: any, images: File[]): Observable<any> {
@@ -19,5 +20,13 @@ export class ProductService {
     });
 
     return this.httpclient.post(`${this.baseUrl}/addproduct`, formData);
+  }
+
+  getAllProducts(): Observable<any> {
+    return this.httpclient.get(`${this.baseUrl1}/getallproducts`);
+  }
+
+  getProductById(id: any): Observable<any> {
+    return this.httpclient.get(`${this.baseUrl1}/getbyid/${id}`)
   }
 }
