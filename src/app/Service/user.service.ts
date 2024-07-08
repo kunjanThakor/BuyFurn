@@ -8,9 +8,9 @@ import { Observable } from 'rxjs';
 })
 export class UserService {
 
-  // baseUrl: String = "https://zonal-beauty-production.up.railway.app/api"
+  baseUrl: String = "https://zonal-beauty-production.up.railway.app/api"
 
-  baseUrl: String = "http://localhost:8089/api"
+  // baseUrl: String = "http://localhost:8089/api"
   constructor(private httpClient: HttpClient) { }
 
   login(): Observable<any> {
