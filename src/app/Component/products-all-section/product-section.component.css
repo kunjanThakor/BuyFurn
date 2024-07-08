@@ -24,6 +24,7 @@
     transition: background-color 0.3s ease;
 }
 
+
 .btn-primary:hover {
     background-color: #e6b800;
     color: #fff;
@@ -76,4 +77,9 @@
 
 #product-title {
     font-size: large;
+}
+
+img {
+    height: 200px;
+    width: 200px;
 }
