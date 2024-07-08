@@ -29,6 +29,8 @@ export class RegisterComponent {
   emailIdExits: any;
   generateOtp() {
     this.userSerive.generateOtp(this.user.email).subscribe(response => {
+      console.log(response);
+
       if (typeof sessionStorage !== 'undefined') {
         sessionStorage.setItem("email", this.user.email.trim())
         sessionStorage.setItem("name", this.user.name)
