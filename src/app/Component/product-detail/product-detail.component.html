@@ -1,10 +1,10 @@
-<div class="container product-container">
+<div class="container product-container mt-5" *ngIf="product">
     <div class="row">
         <div class="col-md-6">
-            <div class="image-slider">
-                <div class="slide" *ngFor="let imgUrl of product.imageUrls; let i = index"
+            <div class="image-slider" *ngIf="product.productImages && product.productImages.length">
+                <div class="slide" *ngFor="let image of product.productImages; let i = index"
                     [class.active]="i === currentSlide">
-                    <img [src]="imgUrl" alt="Product Image {{i + 1}}" class="product-image img-fluid">
+                    <img [src]="'data:image/' + image.type + ';base64,' + image.picBytes" alt="{{ image.name }}">
                 </div>
             </div>
             <div class="slider-controls">
@@ -16,7 +16,7 @@
         </div>
         <div class="col-md-6 product-details">
             <h1 class="product-title">{{ product.title }}</h1>
-            <p class="product-price">${{ product.price }}</p>
+            <p class="product-price">₹{{ product.price }}</p>
             <p class="product-description">{{ product.description }}</p>
 
             <div class="product-quantity">
@@ -27,9 +27,9 @@
             </div>
 
             <button type="button" class="btn btn-warning mt-3">Add to Cart</button>
-            <button type="button" class="btn btn-outline-warning  mt-3 ms-3">Buy Now</button>
+            <button type="button" class="btn btn-outline-warning mt-3 ms-3">Buy Now</button>
 
-            <div class="product-extra">
+            <div class="product-extra mt-3">
                 <details>
                     <summary>Product Details</summary>
                     <p>{{ product.details }}</p>
@@ -37,24 +37,12 @@
 
                 <details>
                     <summary>Warranty</summary>
-                    <p>{{product.warranty}}</p>
+                    <p>{{ product.warranty }} months</p>
                 </details>
-
-                <details>
-                    <summary>Q & A</summary>
-                    <div *ngFor="let question of questions">
-                        <p><strong>Q:</strong> {{ question.text }}</p>
-                        <p *ngIf="question.answer"><strong>A:</strong> {{ question.answer }}</p>
-                    </div>
-                    <p *ngIf="questions.length === 0">No questions yet. Be the first to ask!</p>
-                    <div class="qa-input">
-                        <input type="text" [(ngModel)]="newQuestion" placeholder="Ask a question" />
-                        <button class="btn btn-secondary" (click)="postQuestion()">Post</button>
-                    </div>
-                </details>
-
-
             </div>
         </div>
     </div>
+</div>
+<div *ngIf="!product">
+    Loading product details...
 </div>
