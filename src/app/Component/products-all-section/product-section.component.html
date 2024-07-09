@@ -5,7 +5,7 @@
             <div *ngFor="let product of filteredProducts" class="col-12 col-md-4 col-lg-3 mb-5">
                 <a class="product-item" [routerLink]="['/product', product.id]">
                     <img [src]="'data:image/' + product.productImages[0].type + ';base64,' + product.productImages[0].picBytes"
-                        alt="{{ product.productImages[0].name}}">
+                        alt="{{ product.title}}">
                     <h3 id="product-title">{{ product.title }}</h3>
                     <strong id="product-price">₹{{ product.price.toFixed(2) }}</strong>
                 </a>
