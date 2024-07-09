@@ -15,7 +15,7 @@ export class ProductService {
     const formData: FormData = new FormData();
     formData.append('product', JSON.stringify(product));
 
-    images.forEach((image, index) => {
+    images.forEach((image) => {
       formData.append('imgs', image, image.name);
     });
 
@@ -28,5 +28,18 @@ export class ProductService {
 
   getProductById(id: any): Observable<any> {
     return this.httpclient.get(`${this.baseUrl1}/getbyid/${id}`)
+  }
+
+  deleteProductById(id: any): Observable<any> {
+    return this.httpclient.delete(`${this.baseUrl}/deletebyid/${id}`)
+  }
+
+  updateProductById(product: any, images: File[]): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('product', JSON.stringify(product));
+
+    images.forEach((image) => {
+      formData.append('imgs', image, image.name);
+    }); return this.httpclient.post(`${this.baseUrl}/updateproduct`, formData)
   }
 }
