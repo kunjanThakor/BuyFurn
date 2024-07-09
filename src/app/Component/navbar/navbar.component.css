@@ -63,6 +63,10 @@
     /* Ensure the icon inherits the link color */
 }
 
+a {
+    cursor: pointer;
+}
+
 @media (max-width: 767.98px) {
     .custom-navbar-cta {
         /* justify-content: center; */
