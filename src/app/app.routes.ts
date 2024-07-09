@@ -14,6 +14,7 @@ import { ProductComponent } from './Admin/product/product.component';
 import { UsersComponent } from './Admin/users/users.component';
 import { OtpComponent } from './Component/otp/otp.component';
 import { AddProductComponent } from './Admin/add-product/add-product.component';
+import { CartComponent } from './Component/cart/cart.component';
 
 export const routes: Routes = [
     {
@@ -24,6 +25,9 @@ export const routes: Routes = [
             { path: 'about', component: AboutUsComponent },
             { path: 'furniture', component: FurnitureComponent },
             { path: 'product/:id', component: ProductDetailComponent },
+            { path: 'cart', component: CartComponent },
+            { path: 'profile', component: FurnitureComponent },
+
         ]
     },
 
@@ -38,6 +42,7 @@ export const routes: Routes = [
             { path: 'product', component: ProductComponent },
             { path: 'users', component: UsersComponent },
             { path: 'addproduct', component: AddProductComponent },
+            { path: 'product/:id', component: ProductDetailComponent },
         ]
     }
 ];
