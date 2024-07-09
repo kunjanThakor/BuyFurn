@@ -1,40 +1,51 @@
 .product-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    /* background-color: #f8f9fa; */
+    /* border-radius: 10px; */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    padding: 10px;
 }
 
 .image-slider {
-    position: relative;
-    width: 100%;
     overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+    user-select: none;
 }
 
 .image-slider .slide {
     display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    transition: opacity 0.5s ease-in-out;
+    text-align: center;
 }
 
 .image-slider .slide.active {
     display: block;
-    position: relative;
-    opacity: 1;
 }
 
 .image-slider img {
-    width: 100%;
-    height: auto;
+    max-width: 80%;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.image-slider img:hover {
+    transform: scale(1.05);
 }
 
 .slider-controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.slider-controls button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.slider-controls button:hover {
+    transform: scale(1.2);
 }
 
 .product-details {
@@ -43,27 +54,82 @@
 
 .product-title {
     font-size: 2rem;
-    margin-bottom: 10px;
+    font-weight: bold;
+    color: #343a40;
 }
 
 .product-price {
     font-size: 1.5rem;
-    color: #d9534f;
-    margin-bottom: 10px;
+    color: #e67e22;
+    font-weight: bold;
 }
 
 .product-description {
-    margin-bottom: 20px;
+    color: #6c757d;
 }
 
 .product-quantity {
-    margin-bottom: 20px;
-}
-
-.product-extra {
     margin-top: 20px;
 }
 
+.product-quantity label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.product-quantity select {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
 .product-extra details {
-    margin-bottom: 10px;
+    margin-top: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fff;
+    user-select: none;
+
+}
+
+.loader-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    /* Adjust height as needed */
+}
+
+.loader {
+    border: 4px solid rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #3b5d50;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+select {
+    user-select: none;
+}
+
+.product-extra summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.product-extra p {
+    margin: 10px 0 0 0;
+    color: #6c757d;
 }
