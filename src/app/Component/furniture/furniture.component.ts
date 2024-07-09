@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './furniture.component.css'
 })
 export class FurnitureComponent {
+
+  categories: string[] = ['All', 'Living Room', 'Bedroom', 'Dining Room', 'Office Furniture', 'Outdoor Furniture', 'Storage Solutions'];
+
   onCategoryChange() {
     throw new Error('Method not implemented.');
   }
