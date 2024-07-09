@@ -1,4 +1,4 @@
-<div class="product-section py-5">
+<div *ngIf="!loading" class="product-section py-5">
     <div class="container">
         <!-- Products Container -->
         <div class="row" id="product-list">
@@ -12,4 +12,10 @@
             </div>
         </div>
     </div>
+</div>
+<div *ngIf="loading" class="loader-container">
+    <div class="loader"></div>
+</div>
+<div *ngIf="nofiltereditem" class="loader-container">
+    <h1>No items releted to your search, Sorry!</h1>
 </div>

@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ProductService } from '../../Service/product.service';
@@ -9,13 +9,15 @@ import { error } from 'console';
 @Component({
   selector: 'app-product-section',
   standalone: true,
-  imports: [NgFor, RouterLink],
+  imports: [NgFor, RouterLink, NgIf],
   templateUrl: './product-section.component.html',
   styleUrl: './product-section.component.css'
 })
 export class ProductSectionComponent {
   @Input() filterText: string = '';
 
+  loading: boolean = true;
+  nofiltereditem: boolean = false;
   constructor(private productService: ProductService) { }
   filteredProducts: any = [];
 
@@ -33,8 +35,15 @@ export class ProductSectionComponent {
       this.filteredProducts = this.products.filter((product: any) =>
         product.title.toLowerCase().includes(this.filterText.toLowerCase())
       );
+
+      if (this.filteredProducts.length === 0) {
+        console.log("No items");
+        this.nofiltereditem = true;
+      }
+
     } else {
       this.filteredProducts = this.products;
+      this.nofiltereditem = false;
     }
   }
 
@@ -44,9 +53,12 @@ export class ProductSectionComponent {
         this.products = response;
         this.filteredProducts = this.products;
         this.filterProducts(); // Apply initial filtering if filterText is set
+        this.loading = false
       },
       (error) => {
         console.error('Error fetching products', error);
+        this.loading = false
+
       }
     );
   }
