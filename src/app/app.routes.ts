@@ -15,6 +15,10 @@ import { UsersComponent } from './Admin/users/users.component';
 import { OtpComponent } from './Component/otp/otp.component';
 import { AddProductComponent } from './Admin/add-product/add-product.component';
 import { CartComponent } from './Component/cart/cart.component';
+import { EditProductComponent } from './Admin/edit-product/edit-product.component';
+import { DashboardCardsComponent } from './Component/dashboard-cards/dashboard-cards.component';
+import { UserProfileComponent } from './Component/user-profile/user-profile.component';
+import { UpdateUserComponent } from './Component/update-user/update-user.component';
 
 export const routes: Routes = [
     {
@@ -26,7 +30,10 @@ export const routes: Routes = [
             { path: 'furniture', component: FurnitureComponent },
             { path: 'product/:id', component: ProductDetailComponent },
             { path: 'cart', component: CartComponent },
-            { path: 'profile', component: FurnitureComponent },
+            { path: 'userdashbord', component: DashboardCardsComponent },
+            { path: 'userprofile', component: UserProfileComponent },
+            { path: 'updateuser', component: UpdateUserComponent },
+
 
         ]
     },
@@ -43,6 +50,7 @@ export const routes: Routes = [
             { path: 'users', component: UsersComponent },
             { path: 'addproduct', component: AddProductComponent },
             { path: 'product/:id', component: ProductDetailComponent },
+            { path: 'editproduct/:id', component: EditProductComponent }
         ]
     }
 ];
