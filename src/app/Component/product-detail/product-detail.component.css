@@ -1,7 +1,4 @@
 .product-container {
-    /* background-color: #f8f9fa; */
-    /* border-radius: 10px; */
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
     padding: 10px;
 }
 
@@ -10,6 +7,7 @@
     border-radius: 10px;
     position: relative;
     user-select: none;
+    height: 300px;
 }
 
 .image-slider .slide {
@@ -22,7 +20,8 @@
 }
 
 .image-slider img {
-    max-width: 80%;
+    max-width: 100%;
+    /* height: auto; */
     border-radius: 10px;
     transition: transform 0.3s;
 }
@@ -32,8 +31,12 @@
 }
 
 .slider-controls {
-    top: 50%;
-    transform: translateY(-50%);
+    position: absolute;
+    top: 350px;
+    /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
 }
 
 .slider-controls button {
@@ -50,6 +53,9 @@
 
 .product-details {
     padding: 20px;
+    padding-top: 0px;
+    margin-top: 5px;
+    /* Adjust as needed */
 }
 
 .product-title {
@@ -90,7 +96,22 @@
     padding: 10px;
     background-color: #fff;
     user-select: none;
+}
 
+.product-extra summary {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.product-extra .details-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.product-extra details[open] .details-content {
+    max-height: 1000px;
+    /* Adjust to a sufficiently large value */
 }
 
 .loader-container {
@@ -124,12 +145,31 @@ select {
     user-select: none;
 }
 
-.product-extra summary {
-    font-weight: bold;
-    cursor: pointer;
-}
-
 .product-extra p {
     margin: 10px 0 0 0;
     color: #6c757d;
+}
+
+@media (max-width: 768px) {
+    .image-slider {
+        height: 300px;
+        /* Adjust slider height for smaller screens */
+        margin-bottom: 20px;
+        /* Add margin to separate from product details */
+    }
+
+    .slider-controls {
+        bottom: 20px;
+        /* Adjust slider controls position on smaller screens */
+    }
+
+    .product-details {
+        margin-top: 100px;
+
+        /* Remove top margin for better spacing */
+    }
+}
+
+img {
+    height: 287px;
 }
