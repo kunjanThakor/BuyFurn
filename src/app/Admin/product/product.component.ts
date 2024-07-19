@@ -40,17 +40,11 @@ export class ProductComponent implements OnInit {
   deleteProduct(id: any) {
     this.productService.deleteProductById(id).subscribe(
       response => {
-        if (response.status === 200) {
-          this.loadProducts();
-          console.log("Product deleted successfully", response);
-        } else {
-          console.log("Product deleted but with unexpected status code", response);
-        }
-      },
-      error => {
-        console.error("Error deleting product", error);
-      }
-    );
+        this.loadProducts()
+        Swal.fire("Product deleted!");
+      }, error => {
+        Swal.fire('Error adding product. Try again..');
+      });
   }
   editProduct(id: any) {
     console.log(id);
