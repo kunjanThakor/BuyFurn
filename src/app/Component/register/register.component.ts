@@ -6,6 +6,7 @@ import { UserService } from '../../Service/user.service';
 import { User } from '../../Interface/user';
 import { response } from 'express';
 import { error, log } from 'console';
+import { EmailService } from '../../Service/email.service';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +25,13 @@ export class RegisterComponent {
     pasword: '',
   }
 
-  constructor(private userSerive: UserService, private route: Router) { }
+  EmailRequest: any = {
+    to: '',
+    subject: '',
+    text: ''
+  }
+
+  constructor(private userSerive: UserService, private route: Router, private emailService: EmailService) { }
   registrationError: any;
   emailIdExits: any;
   generateOtp() {
@@ -35,6 +42,18 @@ export class RegisterComponent {
         sessionStorage.setItem("email", this.user.email.trim())
         sessionStorage.setItem("name", this.user.name)
         sessionStorage.setItem("pasword", this.user.pasword)
+
+        this.EmailRequest.to = this.user.email.trim();
+        this.EmailRequest.subject = "Email Verification";
+        this.EmailRequest.text = response;
+
+        this.emailService.sendMail(this.EmailRequest).subscribe(mailResponse => {
+          console.log('Email sent successfully:', mailResponse);
+          this.route.navigate(['/verify-otp']);
+        }, mailError => {
+          console.error('Error sending email:', mailError);
+          this.registrationError = true;
+        });
         this.route.navigate(['/verify-otp']);
       }
 
