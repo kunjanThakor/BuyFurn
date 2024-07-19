@@ -22,7 +22,8 @@
                         <div class="d-flex justify-content-around">
                             <button class="btn btn-outline-primary"
                                 [routerLink]="['/admin/product', product.id]">View</button>
-                            <button class="btn btn-outline-secondary" (click)="editProduct(product.id)">Edit</button>
+                            <button class="btn btn-outline-secondary"
+                                [routerLink]="['/admin/editproduct', product.id]">Edit</button>
                             <button class="btn btn-outline-danger" (click)="deleteProduct(product.id)">Delete</button>
                         </div>
                     </div>
