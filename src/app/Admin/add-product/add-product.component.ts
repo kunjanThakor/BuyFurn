@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class AddProductComponent {
 
   categories: string[] = ['Living Room', 'Bedroom', 'Dining Room', 'Office Furniture', 'Outdoor Furniture', 'Storage Solutions'];
-
+  stockOptions: string[] = ['In Stock', 'In Stock soon', 'Out of Stock']
   product: any = {
     title: '',
     description: '',
@@ -26,7 +26,8 @@ export class AddProductComponent {
     material: '',
     seatingCapacity: null,
     weight: null,
-    careAndMaintenance: ''
+    careAndMaintenance: '',
+    stockStatus: '',
   };
   selectedFiles: File[] = [];
 
@@ -39,6 +40,8 @@ export class AddProductComponent {
   constructor(private productService: ProductService, private router: Router) { }
 
   onSubmit() {
+    console.log(typeof (this.product.stockStatus), this.product.stockStatus);
+
     this.productService.addProduct(this.product, this.selectedFiles)
       .subscribe(response => {
         Swal.fire("Product added!");
@@ -49,19 +52,25 @@ export class AddProductComponent {
       });
   }
 
+
   resetForm() {
     const fileInput: HTMLInputElement = document.getElementById('productImages') as HTMLInputElement;
     if (fileInput) {
       fileInput.value = ''; // Clear the value of the file input
     }
-    // this.selectedFiles = []
+    this.selectedFiles = [];
     this.product = {
       title: '',
       description: '',
-      price: "",
-      warranty: "",
+      price: null,
+      warranty: '',
       category: '',
-
+      color: '',
+      material: '',
+      seatingCapacity: null,
+      weight: null,
+      careAndMaintenance: '',
+      stockStatus: ''
     };
   }
 

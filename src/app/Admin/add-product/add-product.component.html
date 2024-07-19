@@ -57,6 +57,15 @@
                     <textarea class="form-control" id="careAndMaintenance" [(ngModel)]="product.careAndMaintenance"
                         name="careAndMaintenance"></textarea>
                 </div>
+
+                <div class="form-group">
+                    <label for="stock">Stock Status</label>
+                    <select class="form-control" id="stock" [(ngModel)]="product.stockStatus" name="stock" required>
+                        <option value="" disabled selected>Select stock option</option>
+                        <option *ngFor="let stock of stockOptions" [value]="stock">{{stock}}</option>
+                    </select>
+                </div>
+
                 <button type="submit" class="btn btn-primary btn-block">Add Product</button>
             </form>
         </div>
