@@ -9,7 +9,7 @@ export class AdminService {
 
   constructor(private httpClient: HttpClient) { }
 
-  baseUrl: String = "https://zonal-beauty-production.up.railway.app/api"
+  baseUrl: String = "https://buyfurnbackendapis.onrender.com/api"
 
   getAllUsers(): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}/getall`);
