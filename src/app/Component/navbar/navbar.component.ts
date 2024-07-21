@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../Service/user.service';
-
 @Component({
   selector: 'app-navbar',
   standalone: true,

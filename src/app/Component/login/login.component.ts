@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../Service/user.service';
-
+import Swal from 'sweetalert2';
+import { User } from '../../Interface/user';
+import { EncryptionService } from '../../Services/encryption.service';
 
 @Component({
   selector: 'app-login',

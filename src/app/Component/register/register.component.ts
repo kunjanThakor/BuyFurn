@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../Service/user.service';
 import { User } from '../../Interface/user';
 import { response } from 'express';
 import { error, log } from 'console';
 import { EmailService } from '../../Service/email.service';
-
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -28,8 +28,7 @@ export class RegisterComponent {
   EmailRequest: any = {
     to: '',
     subject: '',
-    text: ''
-  }
+    text: ''  }
 
   constructor(private userSerive: UserService, private route: Router, private emailService: EmailService) { }
   registrationError: any;
