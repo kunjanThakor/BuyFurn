@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-lg-5">
                 <div class="intro-excerpt">
-                    <h2>Shop</h2>
+                    <h2>Furniture</h2>
                 </div>
             </div>
             <div class="col-lg-7 d-flex justify-content-end">
@@ -27,11 +27,10 @@
         <div class="col-lg-12 d-flex justify-content-end">
             <div class="input-group mb-3" style="max-width: 300px;">
                 <label class="input-group-text" for="categorySelect">Filter by</label>
-                <select class="form-select" id="categorySelect" [(ngModel)]="selectedCategory"
-                    (change)="onCategoryChange()">
-                    <option value="All Categories" selected>All Categories</option>
-                    <option value="office">Office</option>
-                    <option value="home">Home</option>
+                <select class="form-control" id="category" name="category">
+                    <option value="" disabled selected>Category</option>
+                    <!-- <option value="" selected>All</option> -->
+                    <option *ngFor=" let category of categories" [value]="category">{{category}}</option>
                 </select>
             </div>
         </div>

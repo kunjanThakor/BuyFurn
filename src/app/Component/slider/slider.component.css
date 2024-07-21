@@ -2,50 +2,119 @@
     background-color: #3b5d50;
     color: white;
     width: 100%;
-    height: 70vh;
+    height: auto;
+    /* Make the height dynamic */
+    display: flex;
+    align-items: center;
 }
 
+.carousel-inner {
+    height: auto;
+    /* Make the height dynamic */
+}
+
+.carousel-item {
+    height: auto;
+    /* Make the height dynamic */
+}
 
 img {
-    height: 400px;
+    max-height: 400px;
+    /* Max height to ensure it doesn't exceed a specific size */
+    width: auto;
+    /* Maintain aspect ratio */
 }
 
 .custom-btn {
     background-color: #ffcc00;
-    /* Custom background color */
     padding: 0.75rem 1.5rem;
-    /* Custom padding */
     font-size: 1rem;
-    /* Custom font size */
     font-weight: bold;
-    /* Bold text */
     border-radius: 30px !important;
-    /* Rounded corners */
     transition: all 0.3s ease;
-    /* Smooth transition */
 }
 
 .custom-btn:hover {
     background-color: #e6b800;
-    /* Darker shade for hover */
     color: #ffffff;
-    /* White text on hover */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    /* Shadow effect on hover */
     transform: translateY(-2px);
-    /* Slight lift effect on hover */
 }
 
 .custom-btn:active {
     background-color: #cc9900;
-    /* Even darker shade for active state */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    /* Reduced shadow on active */
     transform: translateY(0);
-    /* No lift effect on active */
 }
 
 .carousel-control-next,
 .carousel-control-prev {
     width: 10% !important;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    img {
+        max-height: 300px;
+        /* Adjust max height for smaller screens */
+    }
+
+    .custom-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 992px) {
+    img {
+        max-height: 250px;
+        /* Adjust max height for smaller screens */
+    }
+
+    .custom-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev {
+        width: 15% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    img {
+        max-height: 200px;
+        /* Adjust max height for smaller screens */
+    }
+
+    .custom-btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .carousel-control-next,
+    .carousel-control-prev {
+        width: 20% !important;
+    }
+
+    .intro-excerpt {
+        text-align: center;
+    }
+
+    .hero-img-wrap {
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    img {
+        max-height: 150px;
+        /* Adjust max height for smaller screens */
+    }
+
+    .custom-btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.7rem;
+    }
 }

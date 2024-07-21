@@ -1,6 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ProductService } from '../../Service/product.service';
+import { response } from 'express';
+import { error } from 'console';
 
 @Component({
   selector: 'app-product-detail',
@@ -10,43 +14,34 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './product-detail.component.css'
 })
 export class ProductDetailComponent {
-  currentSlide: number = 0;
-  nextSlide() {
-    this.currentSlide = (this.currentSlide === this.product.imageUrls.length - 1) ? 0 : this.currentSlide + 1;
-  }
-  prevSlide() {
-    this.currentSlide = (this.currentSlide === 0) ? this.product.imageUrls.length - 1 : this.currentSlide - 1;
-  }
   product: any;
+  productId: string | null = null;
+  currentSlide: number = 0;
   quantity: number = 1;
-  newQuestion: string = '';
-  questions: any[] = [];
+
+  constructor(private route: ActivatedRoute, private productService: ProductService) { }
 
   ngOnInit(): void {
-    // Adding dummy product data with multiple images
-    this.product = {
-      id: 1,
-      title: 'Sample Product',
-      price: 99.99,
-      description: 'This is a sample product description.',
-      imageUrls: [
-        '../../../assets/images/product-2.png',
-        '../../../assets/images/product-1.png',
-        '../../../assets/images/product-3.png'
-      ],
-      details: 'Detailed information about the product.',
-      warranty: '1 year warranty.'
-    };
+    this.route.params.subscribe(params => {
+      this.productId = params['id'];
+      if (this.productId) {
+        this.productService.getProductById(this.productId).subscribe(
+          response => {
+            this.product = response;
+          },
+          error => {
+            console.error('Error fetching product:', error);
+          }
+        );
+      }
+    });
   }
 
-  postQuestion(): void {
-    if (this.newQuestion.trim()) {
-      this.questions.push({
-        text: this.newQuestion,
-        answer: null // Admin can add an answer later
-      });
-      this.newQuestion = '';
-    }
+  nextSlide(): void {
+    this.currentSlide = (this.currentSlide + 1) % this.product.productImages.length;
   }
 
+  prevSlide(): void {
+    this.currentSlide = (this.currentSlide - 1 + this.product.productImages.length) % this.product.productImages.length;
+  }
 }

@@ -4,13 +4,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-shop',
+  selector: 'app-furniture',
   standalone: true,
   imports: [ProductSectionComponent, CommonModule, FormsModule],
-  templateUrl: './shop.component.html',
-  styleUrl: './shop.component.css'
+  templateUrl: './furniture.component.html',
+  styleUrl: './furniture.component.css'
 })
-export class ShopComponent {
+export class FurnitureComponent {
+
+  categories: string[] = ['All', 'Living Room', 'Bedroom', 'Dining Room', 'Office Furniture', 'Outdoor Furniture', 'Storage Solutions'];
+
   onCategoryChange() {
     throw new Error('Method not implemented.');
   }

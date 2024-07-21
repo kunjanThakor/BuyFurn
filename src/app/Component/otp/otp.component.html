@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-5">
+            <h3 class="text-center mb-3">Verify Your Account</h3>
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title text-center mb-4">Enter OTP</h5>
+                    <form (ngSubmit)="verifyOtp()" #otpForm="ngForm">
+                        <div class="mb-3">
+                            <label for="otp" class="form-label">OTP</label>
+                            <input type="text" id="otp" name="otp" class="form-control" required [(ngModel)]="otp">
+                        </div>
+                        <button type="submit" class="btn w-100">Verify OTP</button>
+                    </form>
+                    <p *ngIf="verificationError" class="text-danger text-center mt-3">Invalid otp!. Please
+                        try
+                        again.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

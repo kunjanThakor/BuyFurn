@@ -1,112 +1,175 @@
 .product-container {
-    margin-top: 50px;
+    padding: 10px;
 }
 
-.product-image {
+.image-slider {
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+    user-select: none;
+    height: 300px;
+}
+
+.image-slider .slide {
+    display: none;
+    text-align: center;
+}
+
+.image-slider .slide.active {
+    display: block;
+}
+
+.image-slider img {
     max-width: 100%;
-    height: auto;
-    background-color: whitesmoke;
+    /* height: auto; */
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.image-slider img:hover {
+    transform: scale(1.05);
+}
+
+.slider-controls {
+    position: absolute;
+    top: 350px;
+    /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+.slider-controls button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.slider-controls button:hover {
+    transform: scale(1.2);
 }
 
 .product-details {
     padding: 20px;
+    padding-top: 0px;
+    margin-top: 5px;
+    /* Adjust as needed */
 }
 
 .product-title {
     font-size: 2rem;
     font-weight: bold;
+    color: #343a40;
 }
 
 .product-price {
     font-size: 1.5rem;
-    color: #d9534f;
+    color: #e67e22;
+    font-weight: bold;
 }
 
 .product-description {
-    margin-top: 20px;
-}
-
-.product-cta {
-    margin-top: 30px;
+    color: #6c757d;
 }
 
 .product-quantity {
     margin-top: 20px;
 }
 
-.product-quantity select {
-    margin-left: 10px;
-}
-
-.product-extra {
-    margin-top: 30px;
-}
-
-.product-warranty {
-    margin-top: 20px;
-}
-
-.product-warranty h4 {
+.product-quantity label {
     font-weight: bold;
+    margin-right: 10px;
 }
 
-details {
-    margin-top: 10px;
+.product-quantity select {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+}
+
+.product-extra details {
+    margin-top: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
     padding: 10px;
+    background-color: #fff;
+    user-select: none;
 }
 
-details summary {
-    font-size: 1.2rem;
+.product-extra summary {
     font-weight: bold;
     cursor: pointer;
-    margin-bottom: 10px;
 }
 
-details[open] {
-    background-color: #f9f9f9;
-}
-
-details p {
-    margin-top: 10px;
-}
-
-.image-slider {
-    position: relative;
+.product-extra .details-content {
+    max-height: 0;
     overflow: hidden;
-    width: 100%;
-    height: 400px;
+    transition: max-height 0.3s ease-out;
+}
+
+.product-extra details[open] .details-content {
+    max-height: 1000px;
+    /* Adjust to a sufficiently large value */
+}
+
+.loader-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
     /* Adjust height as needed */
 }
 
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+.loader {
+    border: 4px solid rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #3b5d50;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
 }
 
-.slide.active {
-    opacity: 1;
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
-.product-image {
-    width: 100%;
-    height: auto;
+select {
+    user-select: none;
 }
 
-.slider-controls {
-    margin-top: 10px;
-    text-align: center;
+.product-extra p {
+    margin: 10px 0 0 0;
+    color: #6c757d;
 }
 
-.slider-controls button {
-    margin: 0 5px;
+@media (max-width: 768px) {
+    .image-slider {
+        height: 300px;
+        /* Adjust slider height for smaller screens */
+        margin-bottom: 20px;
+        /* Add margin to separate from product details */
+    }
+
+    .slider-controls {
+        bottom: 20px;
+        /* Adjust slider controls position on smaller screens */
+    }
+
+    .product-details {
+        margin-top: 100px;
+
+        /* Remove top margin for better spacing */
+    }
 }
 
-.product-details .btn {
-    border-radius: 0px;
-    padding-left: 28px;
-    padding-right: 28px;
+img {
+    height: 287px;
 }
